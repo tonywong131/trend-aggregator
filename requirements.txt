@@ -1,5 +1,6 @@
 pytrends==4.9.2
 requests==2.32.4
+-i https://pypi.tuna.tsinghua.edu.cn/simple
 supabase-py==0.1.0
 pandas==2.3.1
 schedule==1.1.0

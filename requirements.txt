@@ -1,2 +1,5 @@
 pytrends
-supabase
+supabase-py
+pandas
+requests
+schedule

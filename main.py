@@ -1,4 +1,11 @@
+from supabase import create_client
+
 import os
+
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+
 
 if "GOOGLE_APPLICATION_CREDENTIALS_JSON" in os.environ:
     json_content = os.environ["GOOGLE_APPLICATION_CREDENTIALS_JSON"]

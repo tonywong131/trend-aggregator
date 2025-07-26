@@ -4,8 +4,10 @@ import os
 
 if "GOOGLE_APPLICATION_CREDENTIALS_JSON" in os.environ:
     json_content = os.environ["GOOGLE_APPLICATION_CREDENTIALS_JSON"]
+    # 寫入專案根目錄
     with open("trend-aggregator-cloud-natural-language.json", "w", encoding="utf-8") as f:
         f.write(json_content)
+    # 設定系統變數
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "trend-aggregator-cloud-natural-language.json"
 
 import sys

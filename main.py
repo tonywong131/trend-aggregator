@@ -1,14 +1,17 @@
-import os
+import os, base64
 
-import os
+# 1. 從環境變數讀 Base64
+b64 = os.getenv("GOOGLE_APPLICATION_CREDENTIALS_B64")
+if not b64:
+    raise RuntimeError("Missing GOOGLE_APPLICATION_CREDENTIALS_B64")
 
-if "GOOGLE_APPLICATION_CREDENTIALS_JSON" in os.environ:
-    json_content = os.environ["GOOGLE_APPLICATION_CREDENTIALS_JSON"]
-    # 寫入專案根目錄
-    with open("trend-aggregator-cloud-natural-language.json", "w", encoding="utf-8") as f:
-        f.write(json_content)
-    # 設定系統變數
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "trend-aggregator-cloud-natural-language.json"
+# 2. 解碼並寫到暫存檔
+json_path = "/app/trend-aggregator-cloud-natural-language.json"
+with open(json_path, "wb") as f:
+    f.write(base64.b64decode(b64))
+
+# 3. 告訴 Google SDK 路徑
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = json_path
 
 import sys
 import requests

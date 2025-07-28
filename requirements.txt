@@ -1,0 +1,11 @@
+requests
+praw
+google-api-python-client
+google-cloud-language
+python-dotenv
+supabase
+feedparser
+gql
+schedule
+
+
